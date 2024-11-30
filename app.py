@@ -275,12 +275,13 @@ def fetch_followers():
     # Ensure that the file exists before sending it
     if os.path.exists(csv_file):
         return send_file(
-            csv_file,
-            mimetype='text/csv',
-            as_attachment=True,
-            attachment_filename=csv_file,
-            download_name=csv_file  # Ensures the frontend will download the file
-        )
+        csv_file,
+        mimetype='text/csv',
+        as_attachment=True,
+        download_name=csv_file  # Correct argument to use
+)
+
+        
     else:
         return jsonify({"error": "CSV file not generated or found"}), 500
 
