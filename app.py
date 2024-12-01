@@ -269,32 +269,24 @@ def fetch_followers():
     bot = InstagramBot(username, password, account_list=account_list)
     bot.start_bot()
 
-    # Assume the CSV file is generated with the name of the first account in the list
     csv_file = f"{account_list[0]}.csv"
 
-    # Ensure that the file exists before sending it
     if os.path.exists(csv_file):
         return send_file(
         csv_file,
         mimetype='text/csv',
         as_attachment=True,
-        download_name=csv_file  # Correct argument to use
-)
-
-        
+        download_name=csv_file  
+        )
     else:
         return jsonify({"error": "CSV file not generated or found"}), 500
 
     
 
 @app.route('/')
-def FollowPage():
-    return render_template('follow.html')
+def InstaBOt():
+    return render_template('main.html')
 
-
-@app.route('/fatch')
-def FatchFollwers():
-    return render_template('fatch-followers.html')
 
 
 if __name__ == '__main__':
